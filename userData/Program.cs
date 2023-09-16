@@ -106,7 +106,8 @@ namespace userDatabase
             {
                 if (current.Equals(lot))
                 {
-
+                    head = current.next;
+                    current = null;
                 }
             }
         }
