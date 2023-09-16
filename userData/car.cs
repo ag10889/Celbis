@@ -10,10 +10,10 @@ namespace userDatabase
 
         public car()
         {
-            make = "Mercedes-Benz";
-            model = "CLK";
-            year = 2001;
-            liscenePlate = "RTH1725";
+            make = null;
+            model = null;
+            year = 0;
+            liscenePlate = null;
         }
         public car(string m, string m2, int y, string lP)
         {

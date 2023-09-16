@@ -16,9 +16,9 @@ namespace userDatabase
         }
         public person()
         {
-            name = "Fuentes, Evan";
-            DOB = 42069;
-            DLnumber = 111111111;
+            name = null;
+            DOB = 0;
+            DLnumber = 0;
         }
 
     }
