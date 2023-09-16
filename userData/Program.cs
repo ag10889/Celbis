@@ -15,6 +15,7 @@ namespace userDatabase
         private string endDate;
 
         List<lotInfo> availableLots = new List<lotInfo>();
+        List<lotInfo> unavailableLots = new List<lotInfo>();
 
         public lotInfo()
         {
@@ -32,10 +33,15 @@ namespace userDatabase
             beginDate = b;
             endDate = e;
         }
-
-        public void addReservation(person customer,string beingDay, string endDay, string timeReserved, string timeTo)
+        public void countAvailableLots()
         {
-
+            //Ok so I'll need some help here, because this size will vary upon which lot we have. So basically I am planning to add until there is no more
+            availableLots.Add(new lotInfo());
+        }
+        public void addReservation(person customer,string beginngDay, string endDay, string timeReserved, string timeTo)
+        {
+            unavailableLots.Add(new lotInfo(customer, true, timeTo, timeReserved, beginngDay, endDay));
+            
         }
 
     }
