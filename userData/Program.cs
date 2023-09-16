@@ -75,8 +75,7 @@ namespace userDatabase
         {
             lotInfo newLot = new lotInfo(c, r, t, tf, b, e, cust);
             Node newNode = new Node(newLot);
-            if (head == null) /* Assigns teh head the newNode value
-                           */
+            if (head == null) 
             {
                 head = newNode;
             }
@@ -100,9 +99,16 @@ namespace userDatabase
             }
 
         }
-        public void delete()
+        public void delete(lotInfo lot)
         {
+            Node current = head;
+            while (current != null)
+            {
+                if (current.Equals(lot))
+                {
 
+                }
+            }
         }
 
 
