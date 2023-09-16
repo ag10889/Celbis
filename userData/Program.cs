@@ -7,8 +7,6 @@ namespace userDatabase
     public class lotInfo
     {
         private person name;
-        private int DOB;
-        private int DL;
         private car userCar;
         private bool reserved;
         private string reserveTimeTo;
@@ -21,13 +19,13 @@ namespace userDatabase
         public lotInfo()
         {
             name = new person();
-            reserved = true;
+            reserved = false;
             reserveTimeTo = "12:00:00";
             reserveTime = "11:59:59";
         }
-        public lotInfo(string userName, int num, int Dli, bool reservation, string timeTo, string timeFrom, string b, string e)
+        public lotInfo(person customer, bool reservation, string timeTo, string timeFrom, string b, string e)
         {
-            name = new person(userName, num, Dli);
+            name = customer;
             reserved = reservation;
             reserveTimeTo = timeTo;
             reserveTime = timeFrom;
@@ -35,7 +33,7 @@ namespace userDatabase
             endDate = e;
         }
 
-        public void unavailableLot()
+        public void addReservation(person customer,string beingDay, string endDay, string timeReserved, string timeTo)
         {
 
         }
