@@ -13,10 +13,43 @@ namespace userDatabase
         private string beginDate;
         private string reserveTime;
         private string endDate;
-       
 
-        List<lotInfo> availableLots = new List<lotInfo>();
-        List<lotInfo> unavailableLots = new List<lotInfo>();
+
+        private Node head = null;
+        StreamReader sr = new StreamReader("par-x.vercel.app/reserve.html");
+
+        public static int convertTimeToSecond(string timeString)
+        {
+            string[] parts = timeString.Split(':', 3);
+            if (timeString.Length != 8)
+            {
+                throw new InvalidTimeException("Invalid time format has been entered.");
+            }
+            int hours, minutes, seconds;
+            if (!int.TryParse(parts[0], out hours) || !int.TryParse(parts[1], out minutes) || !int.TryParse(parts[2], out seconds))
+            {
+                throw new InvalidTimeException("Invalid time format has been entered, please enter numerical values. ");
+            }
+
+            if (hours == null || hours < 0 || hours > 23)
+            {
+                throw new InvalidTimeException("Hours must be less than 24: " + hours);
+            }
+
+            if (minutes == null || minutes < 0 || minutes > 59)
+            {
+                throw new InvalidTimeException("Minutes must be less than 60: " + minutes);
+            }
+
+            if (seconds == null || seconds < 0 || seconds > 59)
+            {
+                throw new InvalidTimeException("Seconds must be less than 60: " + seconds);
+            }
+
+
+            return (hours * 60 * 60) + (minutes * 60) + seconds;
+
+        }
 
         public lotInfo() 
         {
@@ -38,27 +71,38 @@ namespace userDatabase
             endDate = e;
         }
         
-        public void countAvailableLots(int z)
+        public void add(person c, bool r, string t, string tf, string b, string e, car cust)
         {
-            for (int i = 0; i < z; i++)
+            lotInfo newLot = new lotInfo(c, r, t, tf, b, e, cust);
+            Node newNode = new Node(newLot);
+            if (head == null) /* Assigns teh head the newNode value
+                           */
             {
-                availableLots.Add(new lotInfo());
+                head = newNode;
             }
-        }
-        public void addReservation(person customer,string beginngDay, string endDay, string timeReserved, string timeTo, car customerCar)
-        {
-            unavailableLots.Add(new lotInfo(customer, true, timeTo, timeReserved, beginngDay, endDay, customerCar));
-            
-        }
-        public void createNewAvailableLot(lotInfo lot)
-        {
-            for (int i = 0; i < unavailableLots.Count(); i++)
+            else 
             {
-                if (unavailableLots.Equals(lot))
+                Node current = head;
+                while (current.next != null)
                 {
-                    availableLots.Add(lot);
+                    current = current.next;
                 }
+                current.next = newNode;
             }
+        }
+        public void show_all()
+        {
+            Node current = head; 
+            while (current != null) 
+            {
+                Console.WriteLine(current.lot.ToString());
+                current = current.next;
+            }
+
+        }
+        public void delete()
+        {
+
         }
 
 

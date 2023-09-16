@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace userDatabase
 {
     public class person
@@ -18,10 +19,6 @@ namespace userDatabase
             name = "Fuentes, Evan";
             DOB = 42069;
             DLnumber = 111111111;
-        }
-        public string getName()
-        {
-            return name;
         }
 
     }
