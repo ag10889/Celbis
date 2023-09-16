@@ -8,6 +8,13 @@ namespace userDatabase
         private int year;
         private string liscenePlate;
 
+        public car()
+        {
+            make = "Mercedes-Benz";
+            model = "CLK";
+            year = 2001;
+            liscenePlate = "RTH1725";
+        }
         public car(string m, string m2, int y, string lP)
         {
             make = m;
